@@ -26,22 +26,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,AddStudentActivity.class);
         startActivity(intent);
     }
-    public void removeStudent(View view){
-        Intent intent = new Intent(this,RemoveStudentActivity.class);
-        startActivity(intent);
-    }
-    public void changeStudent(View view){
-        Intent intent = new Intent(this,ChangeStudentActivity.class);
-        startActivity(intent);
-    }
+
     public void addGroup(View view){
         Intent intent = new Intent(this,AddGroupActivity.class);
         startActivity(intent);
     }
-    public void removeGroup(View view){
-        Intent intent = new Intent(this,RemoveGroupActivity.class);
-        startActivity(intent);
-    }
+
     public void changeGroup(View view){
         Intent intent = new Intent(this,ChangeGroupActivity.class);
         startActivity(intent);

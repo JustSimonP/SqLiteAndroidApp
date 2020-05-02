@@ -16,16 +16,7 @@
             android:name=".ChangeGroupActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".RemoveGroupActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".AddGroupActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".ChangeStudentActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".RemoveStudentActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AddStudentActivity"
