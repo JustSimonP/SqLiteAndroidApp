@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".DisplayStudentsActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".ChangeGroupActivity"
             android:parentActivityName=".MainActivity" />
         <activity

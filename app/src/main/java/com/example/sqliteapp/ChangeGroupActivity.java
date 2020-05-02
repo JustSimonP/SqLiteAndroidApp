@@ -25,7 +25,7 @@ EditText newName;
     public void changeGroupName(View view){
         SQLiteDatabase database = db.getWritableDatabase();
         ContentValues values = new ContentValues();
-       // values.put("idgrupa",idOfGroup.getText().toString());
+
         values.put("nazwa",newName.getText().toString());
         database.update("grupa", values,"idgrupa = ?", new String[] {idOfGroup.getText().toString()});
     }

@@ -67,13 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void displayStudents(View view){
-//        Intent intent = new Intent(this,DisplayStudentsActivity.class);
-//        startActivity(intent);
         db = DatabaseHelper.getInstance(this);
         SQLiteDatabase database = db.getReadableDatabase();
         String niceQuery = "select students.imie,students.nazwisko,grupa.nazwa from students,grupa " +
                 "where students.grupa_idgrupa = grupa.idgrupa;" ;
-        String query = "select * from students";
         Cursor cursor =database.rawQuery(niceQuery,null);
         if (cursor.getCount()==0){
             Toast.makeText(this,"No data to display",Toast.LENGTH_SHORT).show();
@@ -83,13 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 stringBuilder.append("Imie: " + cursor.getString(0) + "\n");
                 stringBuilder.append("Nazwisko: " + cursor.getString(1) + "\n");
                 stringBuilder.append("Grupa: " + cursor.getString(2) + "\n\n");
-               // stringBuilder.append("Age: " + cursor.getString(3) + "\n");
-               // stringBuilder.append("Group: " + cursor.getString(4) + "\n"+"\n");
+
             }
             AlertDialog.Builder builder = new  AlertDialog.Builder(this);
             builder.setMessage(stringBuilder.toString());
             builder.show();
-            System.out.println(stringBuilder.toString());
             cursor.close();
         }
     }
