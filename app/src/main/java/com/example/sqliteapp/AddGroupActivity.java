@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class AddGroupActivity extends AppCompatActivity {
 EditText groupName;
 DatabaseHelper db;
+AppDatabase appDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

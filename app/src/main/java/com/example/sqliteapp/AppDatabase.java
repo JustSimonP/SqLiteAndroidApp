@@ -1,14 +1,19 @@
 package com.example.sqliteapp;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.DatabaseConfiguration;
 import androidx.room.InvalidationTracker;
+import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 @Database(entities = {Grupa.class, Students.class}, version = 1)
-public class AppDatabase extends RoomDatabase {
+public abstract class AppDatabase extends RoomDatabase {
+    private static AppDatabase INSTANCE;
+    public abstract GrupaDAO grupaDAO();
     @NonNull
     @Override
     protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration config) {
@@ -24,5 +29,17 @@ public class AppDatabase extends RoomDatabase {
     @Override
     public void clearAllTables() {
 
+    }
+    static AppDatabase getDatabase(final Context context) {
+        if (INSTANCE == null) {
+            synchronized (AppDatabase.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                            AppDatabase.class, "student")
+                            .build();
+                }
+            }
+        }
+        return INSTANCE;
     }
 }
