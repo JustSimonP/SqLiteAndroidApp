@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -19,19 +20,29 @@ AppDatabase appDB;
         setContentView(R.layout.activity_add_group);
         groupName = findViewById(R.id.groupName);
 
-        db = DatabaseHelper.getInstance(this);
+        //db = DatabaseHelper.getInstance(this);
+        appDB = AppDatabase.getDatabase(this);
     }
 
     public void addGroup(View view){
-        String groupNameToDB = groupName.getText().toString();
+        final String groupNameToDB = groupName.getText().toString();
         if (groupNameToDB.matches("")) {
             Toast.makeText(this,"Empty groupName is prohibited",Toast.LENGTH_SHORT).show();
 
         }else {
-            SQLiteDatabase database =  db.getWritableDatabase();
-            ContentValues values = new ContentValues();
-            values.put("nazwa",groupNameToDB);
-           database.insert("grupa",null,values);
+//            SQLiteDatabase database =  db.getWritableDatabase();
+//            ContentValues values = new ContentValues();
+//            values.put("nazwa",groupNameToDB);
+//           database.insert("grupa",null,values);
+
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    appDB.grupaDAO().insert(new Grupa(groupNameToDB));
+                    System.out.println("Grupa added succesfully!");
+                }
+            });
+
         }
     }
 }

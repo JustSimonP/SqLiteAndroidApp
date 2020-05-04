@@ -10,10 +10,16 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {Grupa.class, Students.class}, version = 1)
+@Database(entities = {Grupa.class, Students.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
     public abstract GrupaDAO grupaDAO();
+    public abstract StudentsDAO studentsDAO();
+
+
+
+
+
     @NonNull
     @Override
     protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration config) {
